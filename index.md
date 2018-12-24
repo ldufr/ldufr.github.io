@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 ## Welcome to Laurent Dufresne (Ziox) blog
 
 
