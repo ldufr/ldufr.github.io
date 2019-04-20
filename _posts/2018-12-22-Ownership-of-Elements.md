@@ -7,11 +7,12 @@ title: Ownership of Elements in C++
   `void free(void *ptr, size_t size)`.
 
 One of the central problem in software design is the lifetime management of the
-resources. Some language (Java, C#, etc.) choose to have a garbage collector.
+resources. Some language (Java, C#, etc.) chooses to have a garbage collector.
 In C++, the garbage collector is not an acceptable solution and the programmers
 have to solve this problem manually. It can be very simple (e.g. stack variable)
 or very messy in the case of heap objects. To help with the management of those
-resources, the C++ standard offer the so-called smart pointers. (i.e. shared_ptr, unique_ptr, ...)
+resources, the C++ standard offer the so-called smart pointers. (i.e. shared_ptr
+, unique_ptr, ...)
 
 Andre Weissflog talks in more details about `std::shared_ptr` in an article that
 you can find [here](https://floooh.github.io/2018/06/17/handles-vs-pointers.html).
@@ -34,15 +35,16 @@ struct Manager {
 };
 ```
 
-I use the term "Manager" in this context to indicate that the `Manager` structure
-deal with the lifetime of the elements. Furthermore, inheritance can be replaced
-with composition of structures (i.e. `struct Child1 { Parent base; }`) if you prefer.
+I use the term "Manager" in this context to indicate that the `Manager`
+structure deal with the lifetime of the elements. Furthermore, inheritance can
+be replaced with composition of structures (i.e. `struct Child1 { Parent base; }`)
+if you prefer.
 
 A more explicit example is: `Parent` is `Connection`, `Child1` is `HttpConnection`,
 `Child2` is `FtpConnection`, etc.
 
 It's important to notice that the structure `Manager` only knows about the common
-interface `Parent`. It doesn't know how the different types of child, it doesn't
+interface `Parent`. It doesn't know about the different types of child, it doesn't
 know the size of those types and it doesn't care. We are assuming that, `Manager`
 code is compiled without dependencies to any of the child definitions. To reuse
 the `Connection` example, the Manager could be a `Server` that dispatch the
@@ -71,7 +73,7 @@ void Manager::Add(Parent *elem) {
 }
 ```
 
-In fact the second solution can be written with `std::unique_ptr` if you will.
+In fact the second solution can be written with `std::unique_ptr` if you prefer.
 
 ```cpp
 void Manager::Add(std::unique_ptr<Parent>&& elem) {
@@ -79,11 +81,11 @@ void Manager::Add(std::unique_ptr<Parent>&& elem) {
 }
 ```
 
-The two solutions boils down the same thing, which is the `Manager` taking ownership
-of the elements added. This create friction, because the elements added not only
-need to implement the interface of `Parent`, but also need to respect the expected
-lifetime setted up by the `Manager`. The `Manager` has a lack of context about the
-type of the element and the consequence is more friction.
+The two solutions boils down the same thing, which is the `Manager` taking
+ownership of the elements added. This create friction, because the elements
+added not only need to implement the interface of `Parent`, but also need to
+respect the expected lifetime setted up by the `Manager`. The `Manager` has a
+lack of context about the type of the element and the consequence is more friction.
 
 The problem in this scenario is very subtle. When using inheritance, the lifetime
 of the `Child` is the same as the lifetime of the `Parent`. The `Manager` can't
@@ -253,10 +255,10 @@ I started the article by stating that the world would be a better place if `free
 required the size of the memory region to be freed. The reason I made this
 statement was that, if you don't have enough context to allocate resources,
 it's unlikely that you have enough context to understand its lifetime and hence
-freeing it creates an implicit interface over an unknown object. This extra friction
-affect the simplicity, the understanding, the robustness, the flexibility and the
-performances of the application. I referred to the article "Handles are the better
-pointers" from Andre Weissflog that goes over some problems related to smart
-pointers. It particularly focuses on `std::shared_ptr` and my understanding is that
-a `std::shared_ptr` is meant to share ownership of resources which in my opinion
-is very good way of shooting yourself.
+freeing it creates an implicit interface over an unknown object. This extra
+friction affect the simplicity, the understanding, the robustness, the flexibility
+and the performances of the application. I referred to the article "Handles are
+the better pointers" from Andre Weissflog that goes over some problems related
+to smart pointers. It particularly focuses on `std::shared_ptr` and my
+understanding is that a `std::shared_ptr` is meant to share ownership of resources
+which in my opinion is very good way of shooting yourself.
