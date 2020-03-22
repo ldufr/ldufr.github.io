@@ -169,7 +169,7 @@ in that direction. i.e:
 /* +h00D0 */ uint32_t extra_type; // same as GadgetId. Could be used as such.
 ```
 
-So, the conclusion is that our code didn't had a bug, but our abstraction did. There is always
+So, the conclusion is that our code didn't have a bug, but our abstraction did. There is always
 difficulties in those kind of projects, because you don't have access to the abstractions. You
 have to make a lot of guesses and heuristic tests. Nonetheless, this case could have been easily
 avoided when we noticed the structure had a virtual table.
