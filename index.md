@@ -6,6 +6,8 @@ layout: default
 
 
 ### Recent Posts
+[Secrets in configuration files is wrong!](_posts/2021-08-07-Secrets-In-Configuration-Files-Is-Wrong.md)
+
 [Stumbling on the solution](_posts/2020-02-24-Stumbling-on-the-solution.md)
 
 [Facebook CTF postquantumsig](_posts/2019-07-03-Facebook-CTF-postquantumsig.md)
