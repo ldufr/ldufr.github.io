@@ -6,17 +6,17 @@ title: Secrets in configuration files is wrong!
 ## The Goal
 
 The goal of this article is to describe an approach that can be used to specify
-secrets or credentials without ever specifying them in configuration files.
+secrets or credentials without ever writing them in configuration files.
 Moreover, the proposed approach is meant to be non-restrictive, compatible with
 most popular secrets management tools and still offer easy implementation for
 teams that do not have the budget or the incentive to setup more complicated
 solutions. Finally, this approach re-use a very powerful abstraction that has
-been proved to work extremely well, the "path".
+been proved to work extremely well, the "object name".
 
 It is important to specified that this article do not try to define how to
 securely store passwords, how to securely exchange them, how to securely manage
-access rights, but rather propose a scheme that would push interoperability of
-software.
+access rights, but rather propose a scheme that would improve interoperability
+of software.
 
 ## The problem
 
@@ -32,14 +32,18 @@ There is several problems here.
 * It's very inconvenient to version this file in your version control.
 * It's very inconvenient to deploy, because the secrets need to be specified as
   part of the deployment.
-* It's inconvenient to use on a dev machine, because the dev need to find the
-  password.
+* It's inconvenient to use on a dev machine, because the developers have to
+  give the plain text password, meaning he has to decrypt it manually.
 
 From the point of view of Filebeat developers, it make perfect sense. The
-configuration files is what hold the variable controlled by the users. Where
-I can appreciate the reason, I think that storing secrets in a configuration
-file is a broken approach and we will try to explore an alternative way that
-could easily solve this problem.
+configuration files is what hold the variable controlled by the users. I can
+appreciate the reason, but I still think that storing secrets in a configuration
+file is a broken approach and I will try to explore an alternative way that
+would solve this problem, but that would also be easy and powerful.
+
+My approach is to list some observations I have down during my work with this
+problem and try to use those observations to construct a scheme with the
+learning.
 
 ## Observations
 
@@ -61,11 +65,12 @@ could easily solve this problem.
 Several solutions to better manage secrets exists. [Vault by HashiCorp](https://www.vaultproject.io/),
 [Azure Key Vault](https://azure.microsoft.com/en-us/services/key-vault/) and
 [AWS Key Management Service](https://aws.amazon.com/kms/) to name a few. Those
-solutions are rather complex solutions that also offer far more power. Secrets
-rotation, access right management, single use secrets, and more. Where large
-team will want to leverage those features it can be an important burden for
-smaller team or for young project. Moreover, experience shows that currently
-very few 3rd party project support those different providers well.
+solutions are rather complex solutions that also offer far more powerful
+features. Secrets rotation, access right management, single use secrets, and
+more. Where large team will want to leverage those features it can be an
+important burden for smaller team or for young project. Moreover, experience
+shows that currently very few 3rd party project support those different
+providers well.
 
 ### Encrypted credentials in configuration
 Other simpler approach exists. One particularly interesting is [Mozilla SOPS](https://github.com/mozilla/sops)
