@@ -105,8 +105,7 @@ somehow. So, let's define the **Secret Name** with the following properties:
 * The secret name uniquely identify the secret.
 * The secret name is a sequence of Unicode characters.
 * The secret name can contain alphanumeric characters (0-9, a-z, A-Z), forward
-  slash `/`, hyphen `-`, underscore `_`, period `.`, single quote `'`, open
-  parenthesis `(` and closing parenthesis `)`.
+  slash `/`, hyphen `-`, underscore `_` and period.
 
 Example of valid secret name:
 * secret-keys
