@@ -6,6 +6,8 @@ layout: default
 
 
 ### Recent Posts
+[NT Headers as they should be](_posts/2022-08-07-NT-Headers-as-they-should-be.md)
+
 [Leveraging multi-threading to build unreliable services](_posts/2021-08-08-Leveraging-multi-threading-to-build-unreliable-services.md)
 
 [Secrets in configuration files is wrong!](_posts/2021-08-07-Secrets-In-Configuration-Files-Is-Wrong.md)
