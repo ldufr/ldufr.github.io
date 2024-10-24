@@ -6,6 +6,9 @@ layout: default
 
 
 ### Recent Posts
+
+[Intermediary and advance tricks and tips for DynamoDB](_posts/2024-10-24-DynamoDB-intermediary-and-advance-tricks-and-tips.md)
+
 [NT Headers as they should be](_posts/2022-08-07-NT-Headers-as-they-should-be.md)
 
 [Leveraging multi-threading to build unreliable services](_posts/2021-08-08-Leveraging-multi-threading-to-build-unreliable-services.md)
