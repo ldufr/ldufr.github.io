@@ -7,6 +7,10 @@ layout: default
 
 ### Recent Posts
 
+{% for post in site.posts %}
+[{{ post.title }}]({{ post.url }})
+{% endfor %}
+
 [Intermediary and advance tricks and tips for DynamoDB](_posts/2024-10-24-DynamoDB-intermediary-and-advance-tricks-and-tips.md)
 
 [NT Headers as they should be](_posts/2022-08-07-NT-Headers-as-they-should-be.md)
