@@ -1,6 +1,6 @@
 ---
 layout: default
-title: #include <compile_time.h>
+title: \#include \<compile_time.h\>
 ---
 The increasing use of templates, increasing numbers of translation units
 and increasing amount of code in headers has tremendously affected the
