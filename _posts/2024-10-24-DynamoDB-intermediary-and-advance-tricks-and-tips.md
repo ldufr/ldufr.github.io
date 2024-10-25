@@ -223,7 +223,6 @@ Consider the following:
 | USER#1 | #METADATA                |                          |
 | USER#1 | #EMAIL#user1@example.com | email: user1@example.com |
 | USER#1 | #USERNAME#John           | username: John           |
-
 | USER#1 | #GOOGLE#DEAD             | google: DEAD             |
 | USER#1 | #META#F00D               | meta: F00D               |
 | USER#1 | TEAM#1                   |
